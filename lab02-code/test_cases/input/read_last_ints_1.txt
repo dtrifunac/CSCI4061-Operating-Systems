@@ -1,0 +1,2 @@
+$ ./read_last_ints test_cases/resources/numbers.bin 11
+$ exit

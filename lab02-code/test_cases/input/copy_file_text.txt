@@ -1,0 +1,4 @@
+$ rm -rf numbers_copy.txt
+$ ./copy_file test_cases/resources/numbers.txt numbers_copy.txt
+$ diff test_cases/resources/numbers.txt numbers_copy.txt
+$ exit

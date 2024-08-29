@@ -1,0 +1,5 @@
+$ rm -rf numbers_copy.bin
+$ ./copy_file test_cases/resources/numbers.bin numbers_copy.bin
+$ diff test_cases/resources/numbers.bin numbers_copy.bin
+$ exit
+exit

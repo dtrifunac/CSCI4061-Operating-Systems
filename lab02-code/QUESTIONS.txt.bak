@@ -1,0 +1,90 @@
+                           __________________
+
+                            LAB 02 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to complete this lab assignment.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bak' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the autograder results there reflect your
+    local results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+Reading and Writing Files
+=========================
+
+CODE Copy a File
+~~~~~~~~~~~~~~~~
+
+Open and study the file 'copy_file.c'. The 'main' function in this file is
+provided for you. This program accepts two command-line arguments: the name of a
+source file and the name of the destination file. The purpose of this program is
+to produce a copy of the source file in the destination file, overwriting the
+destination file if it already exists.
+
+Complete the function 'copy_file' in this C file. Your code should work for
+either text files or binary files.
+
+Seeking Within Binary Files
+===========================
+
+CODE Read Last n ints in a file
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Open and study the file 'read_last_ints.c'. The 'main' function in this file is
+provided for you. This program accepts two command-line arguments: a name for a
+file 'f' and a number 'n'. The purpose of the program is to read and print the
+last 'n' ints from the binary file 'f', in the order they appear in the file.
+
+Complete the function 'read_last_ints' in this C file. As a hint: look at using
+the 'fseek' function to start reading forward at the right location in the
+binary file. Your code should work for a file of any size, but you may assume
+the file contains at least as many int values as the user asks to read.
+
+Like any function involving file I/O, 'read_last_ints' could encounter an error.
+It should return 0 upon success or -1 if an error occurred.
+
+QUIZ File I/O
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Complete the two code exercises above before answering these quiz questions.
+
+  Which I/O functions did you need to use to implement the 'copy_file' function?
+  - ( ) 'fread' and 'fwrite' if the source file is a binary file, 'fscanf' and
+        'fprintf' if the source file is a text file.
+  - ( ) 'fscanf' and 'fprintf' are the best to use regardless of the type of the
+        source file.
+  - ( ) 'fread' and 'fwrite' are the best to use regardless of the type of the
+        source file.
+  - ( ) None of the above
+
+  Which of the following best describes the 'perror' function?
+  - ( ) It prints out the value of 'errno' set by the most recent operation.
+  - ( ) It prints out a string describing the meaning of 'errno' as set by the
+        most recent operation.
+  - ( ) It prints out the string passed in as an argument followed by the value
+        of 'errno'
+  - ( ) It prints out the string passed in as an argument followed by a string
+        describing the meaning of 'errno' as set by the most recent operation.
+
+  Which of the following is best to pass as the third argument to 'fseek' in the
+  'read_last_ints' function?
+  - ( ) 'SEEK_CUR', to compute an offset from the current position
+  - ( ) 'SEEK_SET', to compute an offset from the start of the file
+  - ( ) 'SEEK_END', to compute an offset from the end of the file
+  - ( ) None of the above
+
+End of Lab Quiz

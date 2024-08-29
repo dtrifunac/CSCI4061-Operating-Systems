@@ -1,0 +1,14 @@
+$ ./read_last_ints test_cases/resources/numbers.bin 11
+3647
+2433
+1624
+1266
+505
+571
+1648
+255
+900
+1801
+1694
+$ exit
+exit

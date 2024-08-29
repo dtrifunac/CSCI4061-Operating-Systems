@@ -1,0 +1,40 @@
+{
+    "name": "Lab 02",
+    "tests": [
+        {
+            "name": "Quiz - QUESTIONS.txt",
+            "description": "Check if the answers in QUESTIONS.txt are correct. This file must be edited so that the correct ( ) choices are replaced with (X) and no other changes are made to the file.",
+            "command": "test_cases/resources/socrates QUESTIONS.txt -c test_cases/resources/quiz_sums.json",
+            "output_file": "test_cases/output/quiz.txt",
+            "points": 0.5
+        },
+        {
+            "name": "copy_file With Text File",
+            "description": "Attempts to copy a text file with the 'copy_file' program",
+            "input_file": "test_cases/input/copy_file_text.txt",
+            "output_file": "test_cases/output/copy_file_text.txt",
+            "points": 0.125
+        },
+        {
+            "name": "copy_file With Binary File",
+            "description": "Attempts to copy a binary file with the 'copy_file' program",
+            "input_file": "test_cases/input/copy_file_binary.txt",
+            "output_file": "test_cases/output/copy_file_binary.txt",
+            "points": 0.125
+        },
+        {
+            "name": "read_last_ints 1",
+            "description": "Attempts to read the last 11 ints from the file 'numbers.bin'",
+            "input_file": "test_cases/input/read_last_ints_1.txt",
+            "output_file": "test_cases/output/read_last_ints_1.txt",
+            "points": 0.125
+        },
+        {
+            "name": "read_last_ints 2",
+            "description": "Attempts to read the last int from the file 'numbers.bin'",
+            "input_file": "test_cases/input/read_last_ints_2.txt",
+            "output_file": "test_cases/output/read_last_ints_2.txt",
+            "points": 0.125
+        }
+    ]
+}
