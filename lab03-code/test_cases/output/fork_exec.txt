@@ -1,0 +1,2 @@
+It's a UNIX system. I know this!
+Child exited with status 0

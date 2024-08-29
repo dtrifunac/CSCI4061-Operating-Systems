@@ -1,0 +1,26 @@
+{
+    "name": "Lab 03",
+    "tests": [
+        {
+            "name": "Quiz - QUESTIONS.txt",
+            "description": "Check if the answers in QUESTIONS.txt are correct. This file must be edited so that the correct ( ) choices are replaced with (X) and no other changes are made to the file.",
+            "command": "test_cases/resources/socrates QUESTIONS.txt -c test_cases/resources/quiz_sums.json",
+            "output_file": "test_cases/output/quiz.txt",
+            "points": 0.5
+        },
+        {
+            "name": "fork_wait",
+            "description": "Runs the 'fork_wait' executable and passes it through the 'test_order_pids' script to ensure that the PIDs have a consistent ordering. Checks that the 'wait()'/'waitpid()' system call has been used to correctly cause parent processes to wait for children which will lead to a well-defined, ordered output shown below.",
+            "input_file": "test_cases/input/fork_wait.txt",
+            "output_file": "test_cases/output/fork_wait.txt",
+            "points": 0.25
+        },
+        {
+            "name": "fork_exec",
+            "command": "./fork_exec",
+            "description": "Runs the 'fork_exec' executable to check that the 'cat' command is successfully executed in the child process and produces the expected output, followed by correct output of the child's exit code from the parent process.",
+            "output_file": "test_cases/output/fork_exec.txt",
+            "points": 0.25
+        }
+    ]
+}

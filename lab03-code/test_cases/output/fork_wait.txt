@@ -1,0 +1,38 @@
+$ ./fork_wait | ./test_cases/resources/test_order_pids
+START pid: 101 parent_pid: 100
+FINISH pid: 103 parent_pid: 102
+FINISH pid: 102 parent_pid: 104
+FINISH pid: 105 parent_pid: 104
+FINISH pid: 104 parent_pid: 106
+FINISH pid: 108 parent_pid: 107
+FINISH pid: 107 parent_pid: 106
+FINISH pid: 109 parent_pid: 106
+FINISH pid: 106 parent_pid: 101
+FINISH pid: 111 parent_pid: 110
+FINISH pid: 110 parent_pid: 112
+FINISH pid: 113 parent_pid: 112
+FINISH pid: 112 parent_pid: 101
+FINISH pid: 115 parent_pid: 114
+FINISH pid: 114 parent_pid: 101
+FINISH pid: 116 parent_pid: 101
+FINISH pid: 101 parent_pid: 100
+$ ./fork_wait | ./test_cases/resources/test_order_pids
+START pid: 101 parent_pid: 100
+FINISH pid: 103 parent_pid: 102
+FINISH pid: 102 parent_pid: 104
+FINISH pid: 105 parent_pid: 104
+FINISH pid: 104 parent_pid: 106
+FINISH pid: 108 parent_pid: 107
+FINISH pid: 107 parent_pid: 106
+FINISH pid: 109 parent_pid: 106
+FINISH pid: 106 parent_pid: 101
+FINISH pid: 111 parent_pid: 110
+FINISH pid: 110 parent_pid: 112
+FINISH pid: 113 parent_pid: 112
+FINISH pid: 112 parent_pid: 101
+FINISH pid: 115 parent_pid: 114
+FINISH pid: 114 parent_pid: 101
+FINISH pid: 116 parent_pid: 101
+FINISH pid: 101 parent_pid: 100
+$ exit
+exit

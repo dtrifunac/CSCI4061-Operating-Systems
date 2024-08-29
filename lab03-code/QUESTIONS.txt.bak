@@ -1,0 +1,139 @@
+                           __________________
+
+                            LAB 03 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to complete this lab assignment.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bak' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the autograder results there reflect your
+    local results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+Forking and Waiting for Processes
+=================================
+
+QUIZ Output Observations
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Analyze the 'fork_wait.c' code, compile it with 'make', and then run
+  the code from a terminal.
+
+  How many total processes are created by running this program including
+  the initial process?
+  - ( ) 3
+  - ( ) 4
+  - ( ) 5
+  - ( ) 16
+
+  Which of the following best describes the relationship between the
+  processes created by running this program?
+  - ( ) There is a "chain" of processes with a single parent, single
+    child, single grand child, etc.
+  - ( ) There is a "fan" of processes with a single parent and multiple
+    children
+  - ( ) There is a lopsided "tree" of processes with a single parent,
+    several children, some of which have grandchildren, some of which
+    have great grandchildren, etc.
+  - ( ) There are several individual parents each of which has a single
+    child.
+
+  What is true about the order in which the different processes complete
+  and output their "FINISH" messages?
+  - ( ) The order that the processes complete is always the same.
+  - ( ) The order that processes complete is unpredictable.
+
+CODE Create Order Within `fork_wait'
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Modify the `fork_wait.c' program to make sure that the processes
+  complete in the same order each run. The easiest way to do this is to
+  have parent processes use the `wait()' or `waitpid()' system call
+  after creating a child, which will "block" the parent until the child
+  completes. This should give a consistent ordering of the output and
+  prevent any orphan processes.
+
+  You can test your results with `make test-quiz'.
+
+  NOTE that since the PIDs from run to run are unpredictable, the `make
+  test-quiz' command uses the `test_order_pids' script to create consistent
+  PIDs for testing purposes.
+
+  EXAMPLE:
+  ,----
+  | > ./fork_wait
+  | START pid: 953670 parent_pid: 929189
+  | FINISH pid: 953674 parent_pid: 953670
+  | FINISH pid: 953672 parent_pid: 953670
+  | FINISH pid: 953675 parent_pid: 953672
+  | FINISH pid: 953673 parent_pid: 953671
+  | FINISH pid: 953671 parent_pid: 953670
+  | FINISH pid: 953676 parent_pid: 953671
+  | FINISH pid: 953670 parent_pid: 929189
+  | FINISH pid: 953679 parent_pid: 953674
+  | FINISH pid: 953680 parent_pid: 953672
+  | FINISH pid: 953681 parent_pid: 953675
+  | FINISH pid: 953682 parent_pid: 953671
+  | FINISH pid: 953684 parent_pid: 953676
+  | FINISH pid: 953677 parent_pid: 953670
+  | FINISH pid: 953678 parent_pid: 953673
+  | FINISH pid: 953683 parent_pid: 953673
+  | FINISH pid: 953685 parent_pid: 953678
+  |
+  | > ./fork_wait | ./test_order_pids
+  | START pid: 101 parent_pid: 100
+  | FINISH pid: 101 parent_pid: 100
+  | FINISH pid: 102 parent_pid: 101
+  | FINISH pid: 103 parent_pid: 101
+  | FINISH pid: 104 parent_pid: 102
+  | FINISH pid: 105 parent_pid: 103
+  | FINISH pid: 106 parent_pid: 101
+  | FINISH pid: 107 parent_pid: 101
+  | FINISH pid: 108 parent_pid: 102
+  | FINISH pid: 109 parent_pid: 103
+  | FINISH pid: 110 parent_pid: 104
+  | FINISH pid: 111 parent_pid: 105
+  | FINISH pid: 112 parent_pid: 111
+  | FINISH pid: 113 parent_pid: 117
+  | FINISH pid: 114 parent_pid: 113
+  | FINISH pid: 115 parent_pid: 106
+  | FINISH pid: 116 parent_pid: 117
+  `----
+
+Fork and Exec
+=============
+
+CODE Run the 'cat' command
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Your last task is to write a simple program to run an external command in a
+  child process. Write your implementation of this task in the file
+  'fork_exec.c'. Your code should take the following sequence of steps:
+    1. Use 'fork' to create a child process.
+    2. In the child process, use 'exec' to run the following command:
+       'cat sample.txt'
+    3. In the parent process, 'wait' for the child to exit.
+    4. In the parent process, print out value of the child's exit code.
+
+  A few hints:
+    1. You may use any variant of 'exec' that you want. However, the easiest
+       variant to use in this situation is probably 'execlp'.
+    2. A call to 'exec' will not return unless an error has occurred.
+    3. Because the parent will only fork one child, the 'wait' function is
+       perfectly acceptable to use here as opposed to 'waitpid'.
+   4. One tricky part of using 'exec': The first command line argument to a
+      program is conventionally the program's name. So you will likely use
+      "cat" in two places to your call to 'exec'.
