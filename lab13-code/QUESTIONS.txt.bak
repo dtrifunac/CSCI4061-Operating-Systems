@@ -1,0 +1,106 @@
+                           __________________
+
+                            LAB 13 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to experiment with topics related to
+  this lab.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bk' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the Autograder there reflects your local
+    results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+
+CODE Semaphore-Based Barrier Implementation
+============================================
+
+  A barrier is a common primitive in parallel computing. It acts as a point of
+  timing synchronization among all of the threads in a group. When a thread
+  arrives at a specific point in its code, the "barrier", it must wait until
+  all other threads have arrived at that same point as well. Once all threads
+  have reached this barrier point, they all may proceed with their execution.
+
+  The most straightforward way to implement a barrier is as a function. Every
+  thread calls this function, which blocks the thread until all other threads
+  have also called the barrier function. Once every thread has called the
+  barrier function, all threads are unblocked.
+
+  Your task is to implement such a barrier function in the file
+  'sema_barrier.c'. Begin by studying the code in 'sema_barrier.c' Note that
+  the size of the thread group using the barrier is defined as 'N_THREADS' at
+  the top of the file.
+
+  The existing code starts N_THREADS additional threads from the initial main
+  thread and then waits for all of these threads to complete. Meanwhile, the
+  function executed by each thread prints out a message, calls the barrier
+  function, and then prints out a second message before terminating.
+
+  Your task is to fill in the missing code in the following locations:
+    - At the beginning of 'main()'. Initialize the necessary semaphores here.
+    - At the end of 'main()'. Destroy the necessary semaphores here.
+    - In the body of 'barrier()'. Use 'sem_wait()' and 'sem_post()' as needed to
+      implement the barrier logic described above.
+
+  Note the use of a static variable given to you in the body of 'barrier()'.
+  You should use this variable to track the number of threads currently waiting
+  at the barrier. Remember, the value of a static variable persists across
+  multiple function calls. We saw this earlier in this class in the context of
+  the 'strtok()' function.
+
+  Hint: You will need *two* semaphores to implement the barrier. One will be a
+  binary semaphore used for mutual exclusion, while the other is a counting
+  semaphore used to block and unblock threads at the barrier as necessary.
+
+
+QUIZ Questions 'threads_main' Observations
+==========================================
+
+  What should be the initial value of the binary semaphore in your barrier?
+    - ( ) 0
+    - ( ) 1
+    - ( ) N_THREADS
+    - ( ) None of the Above
+
+  What should be the initial value of the counting semaphore in your barrier?
+    - ( ) 0
+    - ( ) 1
+    - ( ) N_THREADS
+    - ( ) None of the Above
+
+  Each new thread is given a unique index, and each of these threads prints its
+  index to the screen before it arrives at the barrier. What do you observe
+  about the order in which these threads execute when you run the program
+  multiple times?
+    - ( ) The threads always get turns in the order in which they were created.
+    - ( ) The threads always get turns in the reverse order in which they were
+          created.
+    - ( ) The threads don't get turns on the CPU in any particular order.
+    - ( ) The threads get turns in a random order, but that order is consistent
+          across multiple runs of the program.
+
+  Each thread also prints out its ID after getting through the barrier. What do
+  you observe about the order in which threads get to leave the barrier when
+  you run the program multiple times?
+    - ( ) The threads always get to leave the barrier in the same order in
+          which they first arrived at the barrier.
+    - ( ) The threads leave the barrier in the reverse of the order in which
+          they arrived at the barrier.
+    - ( ) The threads don't get to leave the barrier in any particular order.
+    - ( ) The threads leave the barrier in a random order, but the order is
+          consistent across multiple runs of the program.
+
+End Lab Quiz

@@ -1,0 +1,23 @@
+$ ./sema_barrier | sed 's/[0-9]\+ past/x past/'
+Thread 0 about to enter barrier
+Thread 8 about to enter barrier
+Thread 4 about to enter barrier
+Thread 3 about to enter barrier
+Thread 9 about to enter barrier
+Thread 7 about to enter barrier
+Thread 5 about to enter barrier
+Thread 6 about to enter barrier
+Thread 1 about to enter barrier
+Thread 2 about to enter barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+Thread x past barrier
+$ exit
+exit

@@ -1,0 +1,19 @@
+{
+    "name": "Lab 13",
+    "tests": [
+        {
+            "name": "Quiz - QUESTIONS.txt",
+            "description": "Check if the answers in QUESTIONS.txt are correct. This file must be edited so that the correct ( ) choices are replaced with (X) and no other changes are made to the file.",
+            "command": "test_cases/resources/socrates QUESTIONS.txt -c test_cases/resources/quiz_sums.json",
+            "output_file": "test_cases/output/quiz.txt",
+            "points": 0.5
+        },
+        {
+            "name": "Code - sema_barrier",
+            "description": "Checks the sema_barrier program for correct output. The threads may run in a different order across executions (hence the use of 'sed' to elide their indexes).",
+            "input_file": "test_cases/input/sema_barrier.txt",
+            "output_file": "test_cases/output/sema_barrier.txt",
+            "points": 0.5
+        }
+    ]
+}
