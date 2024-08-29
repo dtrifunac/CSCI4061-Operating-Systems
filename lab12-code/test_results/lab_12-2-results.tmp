@@ -1,0 +1,37 @@
+======================================================================================================================================================================================
+== Test 2: Code - threads_main
+== Checks the threads_main program for correct output. The consumer threads may
+== get turns in different orders on different executions (hence the use of 'sed'
+== to elide their indexes), but the queue elements are removed in a consistent
+== order.
+Running test...
+Expected output is in file 'test_results/raw/lab_12-2-expected.tmp'
+Actual output is in file 'test_results/raw/lab_12-2-actual.tmp'
+Test FAILED
+== Side-by-Side Comparison ==
+== Differing lines have a character like '|' '>' or '<' in the middle
+==== EXPECT ====                                         ==== ACTUAL ====
+$ ./threads_main | sed 's/^Consumer [0-9]/Consumer x/'   $ ./threads_main | sed 's/^Consumer [0-9]/Consumer x/'
+Consumer x: Akerman                                    <
+Consumer x: Blegen                                     <
+Consumer x: Campbell                                   <
+Consumer x: Diehl                                      <
+Consumer x: Eddy                                       <
+Consumer x: Ford                                       <
+Consumer x: Gibson                                     <
+Consumer x: Heller                                     <
+Consumer x: Iona                                       <
+Consumer x: Jackson                                    <
+$ exit                                                   $ exit
+exit                                                     exit
+== Line Differences ==
+EXPECT  2) Consumer x: Akerman
+EXPECT  3) Consumer x: Blegen
+EXPECT  4) Consumer x: Campbell
+EXPECT  5) Consumer x: Diehl
+EXPECT  6) Consumer x: Eddy
+EXPECT  7) Consumer x: Ford
+EXPECT  8) Consumer x: Gibson
+EXPECT  9) Consumer x: Heller
+EXPECT 10) Consumer x: Iona
+EXPECT 11) Consumer x: Jackson

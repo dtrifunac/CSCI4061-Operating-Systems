@@ -1,0 +1,2 @@
+$ ./threads_main | sed 's/^Consumer [0-9]/Consumer x/'
+$ exit

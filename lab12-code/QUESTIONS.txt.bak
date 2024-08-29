@@ -1,0 +1,85 @@
+                           __________________
+
+                            LAB 12 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to experiment with topics related to
+  this lab.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bk' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the Autograder there reflects your local
+    results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+
+CODE Complete Thread-Safe Queue Implementation
+==============================================
+
+  First, study the code in 'threads_main.c'. This program creates a queue data
+  structure to be used by a single producer thread and several consumer
+  threads. The "items" being shared from the producer to the consumer are
+  simple message strings. The producer thread adds strings to the queue while
+  the consumer threads remove strings from the queue and prints them to the
+  screen.
+
+  To complete the code portion of this lab, you will need complete the code
+  in the 'queue.c' file.
+
+  The code in 'queue.c' currently implements a bounded queue data structure
+  based on a linked list, but it is *not* thread safe. Your task is to modify
+  this code to make the queue safe for concurrent access by multiple threads.
+
+  We have already added the necessary synchronization primitives to the
+  'queue_t' definition in 'queue.h':
+    - 'pthread_mutex_t lock': This lock must be held by any thread while it
+      accesses and/or modifies the queue
+    - 'pthread_cond_t queue_full': Threads wait on this condition variable when
+      they wish to add a new element to an already full queue.
+    - 'pthread_cond_t queue_empty': Threads wait on this condition variable when
+      they wish to remove an element from a queue that is currently empty.
+
+  Remember, this queue has a maximum size, given by the 'MAX_QUEUE_SIZE'
+  constant defined in 'queue.h'. If the queue's size is equal to
+  'MAX_QUEUE_SIZE', then threads that want to add a new element to the queue
+  should block by waiting on the appropriate condition variable. If the queue
+  is empty, then threads that want to remove an element from the queue should
+  block by waiting on the appropriate condition variable.
+
+QUIZ Questions 'threads_main' Observations
+==========================================
+
+  Given the values of 'NUM_MESSAGES' and 'NUM_CONSUMERS' defined in
+  'thread_main.c', how many iterations should we expect each consumer thread to
+  execute?
+    - ( ) 0 Iterations
+    - ( ) 1 Iteration
+    - ( ) 2 Iterations
+    - ( ) 3 Iterations
+
+  Each consumer thread is given a unique index, and each consumer prints its
+  index to the screen along with the element it just removed from the shared
+  queue. When you execute the 'threads_main' program multiple times, what do
+  you observe about the order in which the consumer threads run?
+    - ( ) Consumers always take turns in the order in which they were created.
+    - ( ) Consumers always take turns in the reverse order of their creation.
+    - ( ) Consumers don't take turns in a consistent order.
+
+  What do you observe about the order of the messages printed to the screen when
+  you execute the 'threads_main' program multiple times?
+    - ( ) Messages are always printed in alphabetical order.
+    - ( ) Messages are always printed in reverse alphabetical order.
+    - ( ) Messages are not printed in a consistent order.
+

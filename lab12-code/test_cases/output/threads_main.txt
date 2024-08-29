@@ -1,0 +1,13 @@
+$ ./threads_main | sed 's/^Consumer [0-9]/Consumer x/'
+Consumer x: Akerman
+Consumer x: Blegen
+Consumer x: Campbell
+Consumer x: Diehl
+Consumer x: Eddy
+Consumer x: Ford
+Consumer x: Gibson
+Consumer x: Heller
+Consumer x: Iona
+Consumer x: Jackson
+$ exit
+exit
