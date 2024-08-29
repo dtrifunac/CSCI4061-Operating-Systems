@@ -1,0 +1,19 @@
+{
+    "name": "Lab 11",
+    "tests": [
+        {
+            "name": "Quiz - QUESTIONS.txt",
+            "description": "Check if the answers in QUESTIONS.txt are correct. This file must be edited so that the correct ( ) choices are replaced with (X) and no other changes are made to the file.",
+            "command": "test_cases/resources/socrates QUESTIONS.txt -c test_cases/resources/quiz_sums.json",
+            "output_file": "test_cases/output/quiz.txt",
+            "points": 0.5
+        },
+        {
+            "name": "Code - HTTP Client",
+            "description": "Tests the HTTP client program by retrieving three files from an HTTP server. Checks that the downloaded files match the provided reference copies.",
+            "input_file": "test_cases/input/http_client.txt",
+            "output_file": "test_cases/output/http_client.txt",
+            "points": 0.5
+        }
+    ]
+}
