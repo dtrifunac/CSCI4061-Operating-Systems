@@ -1,0 +1,49 @@
+===============================================================================================================================================================================================
+== Test 4: List - Get Command
+== Checks that the ~get N~ command works correct to return value at Nth index of
+== the list.
+Running test...
+Expected output is in file 'test_results/raw/lab_01-4-expected.tmp'
+Actual output is in file 'test_results/raw/lab_01-4-actual.tmp'
+Test FAILED
+== Side-by-Side Comparison ==
+== Differing lines have a character like '|' '>' or '<' in the middle
+==== EXPECT ====                                                ==== ACTUAL ====
+Linked List Demo                                                Linked List Demo
+Commands:                                                       Commands:
+  print:          shows the current contents of the list          print:          shows the current contents of the list
+  clear:          eliminates all elements from the list           clear:          eliminates all elements from the list
+  exit:           exit the program                                exit:           exit the program
+  insert thing:   inserts the given string into the list          insert thing:   inserts the given string into the list
+  size:           prints the size of the list                     size:           prints the size of the list
+  get index:      get the item at the given index                 get index:      get the item at the given index
+  contains thing: determine if the given thing is in the list     contains thing: determine if the given thing is in the list
+list> get 0                                                     list> get 0
+out of bounds                                                   out of bounds
+list> get 5                                                     list> get 5
+out of bounds                                                   out of bounds
+list> insert apple                                              list> insert apple
+list> insert pear                                               list> insert pear
+list> insert banana                                             list> insert banana
+list> print                                                     list> print
+0: apple                                                        0: apple
+1: pear                                                         1: pear
+2: banana                                                       2: banana
+list> get 0                                                     list> get 0
+0: apple                                                      | out of bounds
+list> get 1                                                     list> get 1
+1: pear                                                       | out of bounds
+list> get 2                                                     list> get 2
+2: banana                                                     | out of bounds
+list> get 3                                                     list> get 3
+out of bounds                                                   out of bounds
+list> get -1                                                    list> get -1
+out of bounds                                                   out of bounds
+list> exit                                                      list> exit
+== Line Differences ==
+EXPECT 22) 0: apple
+ACTUAL 22) out of bounds
+EXPECT 24) 1: pear
+ACTUAL 24) out of bounds
+EXPECT 26) 2: banana
+ACTUAL 26) out of bounds
