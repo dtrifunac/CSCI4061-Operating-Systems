@@ -1,0 +1,18 @@
+$ ./udp_client CSCI 4061
+Course Title: Introduction to Operating Systems
+$ ./udp_client CSCI 2021
+Course Title: Machine Architecture and Organization
+$ ./udp_client CSCI 4041
+Course Title: Algorithms and Data Structures
+$ ./udp_client MATH 4707
+Course Title: Introduction to Combinatorics and Graph Theory
+$ ./udp_client CSCI 1901
+Course Not Found
+$ ./udp_client CSCI 1902
+Course Not Found
+$ ./udp_client CHEM 2303
+Course Title: Organic Chemistry II
+$ ./udp_client MATH 1999
+Course Not Found
+$ exit
+exit

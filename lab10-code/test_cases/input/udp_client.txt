@@ -1,0 +1,9 @@
+$ ./udp_client CSCI 4061
+$ ./udp_client CSCI 2021
+$ ./udp_client CSCI 4041
+$ ./udp_client MATH 4707
+$ ./udp_client CSCI 1901
+$ ./udp_client CSCI 1902
+$ ./udp_client CHEM 2303
+$ ./udp_client MATH 1999
+$ exit

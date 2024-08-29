@@ -1,0 +1,19 @@
+{
+    "name": "Lab 10",
+    "tests": [
+        {
+            "name": "Quiz - QUESTIONS.txt",
+            "description": "Check if the answers in QUESTIONS.txt are correct. This file must be edited so that the correct ( ) choices are replaced with (X) and no other changes are made to the file.",
+            "command": "test_cases/resources/socrates QUESTIONS.txt -c test_cases/resources/quiz_sums.json",
+            "output_file": "test_cases/output/quiz.txt",
+            "points": 0.5
+        },
+        {
+            "name": "Code - udp_client",
+            "description": "Tests the UDP client program by looking up various possible courses to check if the proper resposnes are received from the server.",
+            "input_file": "test_cases/input/udp_client.txt",
+            "output_file": "test_cases/output/udp_client.txt",
+            "points": 0.5
+        }
+    ]
+}

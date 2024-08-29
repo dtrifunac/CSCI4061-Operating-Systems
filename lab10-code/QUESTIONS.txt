@@ -1,0 +1,109 @@
+                           __________________
+
+                            LAB 10 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to experiment with topics related to
+  this lab.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bk' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the Autograder there reflects your local
+    results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+
+QUIZ Questions UDP Socket Programming
+=====================================
+
+  If we want to use 'getaddrinfo()' to obtain either an IPv4 or an IPv6
+  address for a server, which value do we use for the 'ai_family' field
+  in the 'hints' struct passed to the system call?
+   - ( ) AF_INET
+   - ( ) AF_INET6
+   - (X) AF_UNSPEC
+   - ( ) AI_PASSIVE
+
+  If we will be using 'getaddrinfo()' in preparation for using a UDP
+  socket, which value do we use for the 'ai_socktype' field in the
+  'hints' struct passed to the system call?
+   - ( ) SOCK_STREAM
+   - (X) SOCK_DGRAM
+   - ( ) SOCK_UDP
+   - ( ) SOCK_PUPPET
+
+  What is the native endianness of all of the CSE Labs machines?
+   - (X) Little Endian
+   - ( ) Big Endian
+   - ( ) Medium Endian
+   - ( ) West Endian
+
+   What is the expected endianness of all binary data sent on the Internet?
+   - ( ) Little Endian
+   - (X) Big Endian
+   - ( ) Medium Endian
+   - ( ) West Endian
+
+  Why do we need to use the 'freeaddrinfo()' function on the struct pointer
+  passed as the last argument to 'getaddrinfo()' once we are done using that
+  struct in our code?
+   - ( ) 'getaddrinfo()' opens file descriptors, and 'freeaddrinfo()' will close
+         them for us.
+   - ( ) Trick question: We can really just use 'free()' on this pointer.
+   - (X) 'getaddrinfo()' returns a linked list of structs, and 'freeaddrinfo()'
+         frees the memory that was allocated for the list
+   - ( ) This is needed to inform the computer at the address that it will no
+         longer receive any connection requests from our code.
+
+CODE Complete udp_client.c
+==========================
+
+  Complete the code in 'udp_client.c'. This program is a simple tool for looking
+  up the names of various UMN courses by sending a UDP message to a server that
+  maintains a repository of course names. It expects two command-line arguments:
+    1. The four-letter abbreviated name of the course's department
+       (e.g., "CSCI" or "CHEM")
+    2. The course's 4-digit number, e.g., 4061 or 1031.
+
+  Your program should set up a UDP socket with the 'getaddrinfo()' and the
+  'socket()' system calls. Then, it should send a message to the server
+  with the 'sendto()' system call and receive a reply with the 'recvfrom()'
+  system call.
+
+  You will need to know the IP address and port of the course name server
+  for your call to 'getaddrinfo()'. They are:
+    IP Address: 23.23.63.223
+    Port: 4061
+
+  You also need to know the data format expected by the server (so it can
+  understand your requests) and the format of the data it will send back to your
+  process (so you can understand its responses).
+
+  The server expects a request to be a UDP message with the following contents:
+    1. Course Department: 5 Bytes representing a null-terminated string of up
+       to 4 characters
+    2. Course Number: 4 bytes representing an integer value, Big Endian
+
+  The server will send a UDP message in its reply with the following contents:
+    1. Lookup Status: 4 bytes representing an integer value, Big Endian
+    2. Course Name: 128 bytes representing a null-terminated string
+
+  If the server was able to find the course you specified, the 'status' value
+  in the response will be 0. Otherwise, it will be -1 if the course was not
+  found.
+
+  Hint: Structs are very useful here. You can represent requests and responses
+  each as structs and then read and write struct instances to and from your
+  socket file descriptor.
