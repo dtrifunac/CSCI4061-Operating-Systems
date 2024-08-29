@@ -1,0 +1,99 @@
+                           __________________
+
+                            LAB 11 QUESTIONS
+                           __________________
+
+Lab Instructions
+================
+
+  Follow the instructions below to experiment with topics related to
+  this lab.
+  - For sections marked QUIZ, fill in an (X) for the appropriate
+    response in this file. Use the command `make test-quiz' to see if
+    all of your answers are correct.
+  - For sections marked CODE, complete the code indicated. Use the
+    command `make test-code' to check if your code is complete.
+  - DO NOT CHANGE any parts of this file except the QUIZ sections as it
+    may interfere with the tests otherwise.
+  - If your `QUESTIONS.txt' file seems corrupted, restore it by copying
+    over the `QUESTIONS.txt.bk' backup file.
+  - When you complete the exercises, check your answers with `make test'
+    and if all is well, create a zip file with `make zip' and upload it
+    to Gradescope. Ensure that the Autograder there reflects your local
+    results.
+  - IF YOU WORK IN A GROUP only one member needs to submit and then add
+    the names of their group.
+
+
+QUIZ Questions UDP Socket Programming
+=====================================
+
+  If we will be using 'getaddrinfo()' in preparation for using a TCP
+  socket, which value do we use for the 'ai_socktype' field in the
+  'hints' struct passed to the system call?
+    - (X) SOCK_STREAM
+    - ( ) SOCK_DGRAM
+    - ( ) SOCK_UDP
+    - ( ) SOCK_PUPPET
+
+  What additional system call does a TCP client need to execute that we
+  didn't need for a UDP client?
+    - ( ) bind()
+    - ( ) listen()
+    - ( ) accept()
+    - (X) connect()
+
+  When reading from a TCP socket, how do we know when the other process
+  has disconnected?
+    - ( ) read() returns -1
+    - (X) read() returns 0
+    - ( ) A signal is delivered to the current process
+    - ( ) Trick question: read() will just block forever
+
+  What is the format of HTTP requests and responses?
+    - ( ) Binary data, all in big-endian byte ordering
+    - ( ) Binary data, all in little-endian byte ordering
+    - ( ) A mix of binary data and text data
+    - (X) Just text data -- requests and responses are strings.
+
+  What is the meaning of 'GET' in HTTP?
+    - (X) Retrieve a particular resource from the server
+    - ( ) Add a new resource for the server to store
+    - ( ) Update an existing resource on the server
+    - ( ) Delete an existing resource on the server
+
+CODE Complete simple_http_client.c
+==================================
+
+  Complete the code in 'simple_http_client.c'. This program retrieves three
+  different files from an HTTP server. The main() function, already provided
+  for you, does the following:
+    1. Calls 'connect_to_server()' to create a new TCP socket for a connection
+       with the specified server and at the specified port.
+    2. Calls 'write_http_request()' to send an HTTP request to the server at
+       the other end of the TCP connection.
+    3. Calls 'read_http_response()' to receive an HTTP response from the server
+       at the other end of the TCP connection.
+    4. Repeats these steps once per file (the file names are declared in a
+       global variable at the top of the file).
+
+  The 'main()' function has been implemented for you, but it calls functions
+  you will have to complete.
+
+  'read_http_response()' has also been implemented for you. You may want to
+  study its code as it uses some I/O tricks you may find useful in the future.
+  It reads an HTTP response from the server and saves the body of the response
+  to a file.
+
+  First, complete the code for the 'connect_to_server()' function. This function
+  should create and return a new socket file descriptor for a TCP connection
+  with the specified server, or return -1 on error. The server's address and
+  port are provided as function arguments.
+
+  Second, complete the code for the 'write_http_request()' function. This
+  function should write a valid HTTP request to the specified socket file
+  descriptor. You will want to keep your HTTP request extremely simple. It does
+  not need to include *any* request headers.
+
+  Don't forget that a line in HTTP is terminated with "\r\n" rather than the
+  standard "\n" that we are used to.
